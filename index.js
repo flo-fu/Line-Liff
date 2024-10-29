@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
     .init({ liffId: process.env.LIFF_ID })
     .then(() => {
         console.log("Success! you can do something with LIFF API here." + "LIFF_ID = "  + process.env.LIFF_ID)
-        liff.getContext((res) => {
-            document.getElementById('log').innerText = JSON.stringify(res, null, 4);
+        liff.getProfile((profile) => {
+            document.getElementById('log').innerText = JSON.stringify(profile, null, 4);
         });
     })
     .catch((error) => {
