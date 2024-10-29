@@ -4,7 +4,8 @@ import liff from '@line/liff'
 document.addEventListener("DOMContentLoaded", function() {
   liff
     .init({ liffId: process.env.LIFF_ID })
-    .then(() => {
+    .then((res) => {
+        document.getElementById('log').innerText = JSON.stringify(res, null, 4);
         console.log("Success! you can do something with LIFF API here.")
     })
     .catch((error) => {
