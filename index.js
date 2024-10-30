@@ -1,10 +1,11 @@
 import './index.css';
 import liff from '@line/liff'
 
-document.addEventListener("DOMContentLoaded", function() {
+window.onload = function() {
   liff.init({
         liffId: process.env.LIFF_ID,
-        withLoginOnExternalBrowser: true    })
+        // withLoginOnExternalBrowser: true
+    })
     .then(() => {
         console.log("Success! you can do something with LIFF API here." + "LIFF_ID = "  + process.env.LIFF_ID)
         liff.getProfile((profile) => {
@@ -23,4 +24,4 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(error)
         document.getElementById('log').innerText = JSON.stringify(error, null, 4);
     });
-});
+};
