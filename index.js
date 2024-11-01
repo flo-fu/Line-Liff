@@ -3,26 +3,23 @@ import liff from '@line/liff'
 
 document.addEventListener("DOMContentLoaded", function() {
     liff.init({
-        // liffId: process.env.LIFF_ID,
-        liffId: "2006493063-malAL81w",
+        liffId: process.env.LIFF_ID,
     })
     .then(() => {
         console.log("Success! you can do something with LIFF API here." + "LIFF_ID = "  + process.env.LIFF_ID)
-        liff.getProfile((profile) => {
-            console.log(profile);
+        liff.getProfile()
+        .then((profile) => {
             document.getElementById('userId').innerHTML = profile.userId;
             document.getElementById('displayName').innerHTML = profile.displayName;
             document.getElementById('pictureUrl').innerHTML = profile.pictureUrl;
             document.getElementById('statusMessage').innerHTML = profile.statusMessage;
-            document.getElementById('log').innerText = JSON.stringify(profile, null, 4);
         })
         .catch((error) => {
+            document.getElementById('log').innerText += JSON.stringify(error, null, 4);
             console.log(error);
-            document.getElementById('log').innerText = JSON.stringify(error, null, 4);
         });
     })
     .catch((error) => {
         console.log(error);
-        document.getElementById('log').innerText = JSON.stringify(error, null, 4);
     });
 });
